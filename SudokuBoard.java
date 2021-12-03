@@ -1,3 +1,5 @@
+package Sudoku;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +11,6 @@ import java.util.Random;
 public class SudokuBoard {
     private int[][] boardArr;
     private int[][] unfinishedBoard;
-    private boolean loadedBoard;
     private int lengthOfBoard;
     private List<Boolean[]> oneToNine;
 
@@ -31,12 +32,12 @@ public class SudokuBoard {
 
     /**
      * This constructor exists for loaded games, where a 2d board array has already been made.
-     * @param boardArr The sudoku board that was saved.
-     * @param loadedBoard An additional parameter to the constructor in order for overloading to occur.
+     * @param boardArr The completed sudoku board that was saved.
+     * @param unfinishedBoard The unfinished sudoku board that was saved.
      */
-    public SudokuBoard(int[][] boardArr, boolean loadedBoard) {
+    public SudokuBoard(int[][] boardArr, int[][] unfinishedBoard) {
         this.boardArr = boardArr;
-        this.loadedBoard = true;
+        this.unfinishedBoard = unfinishedBoard;
     }
 
     /**
@@ -47,7 +48,7 @@ public class SudokuBoard {
      * whether that number exists in the table already or not. This is a method to circumvent using 4 for loops to
      * search through the whole board and then to compare. It has hopefully optimized the code more. The last board length worth
      * of arrays are used to represent each "box" that the numbers exist in. In the case of a 9 by 9, these boxes are
-     * 3 by 3. This is one of the rules of Sudoku. In order to not use more for loops, the column and row indices were
+     * 3 by 3. This is one of the rules of Sudoku.Sudoku. In order to not use more for loops, the column and row indices were
      * converted to "coordinates". Where the first box has an index of 0 + 2 x board length and it increases one as you
      * go down the row and starts at the first column again when it reaches the end. This was done by a lot of modular manipulation.
      *
